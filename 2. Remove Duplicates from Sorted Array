@@ -1,0 +1,36 @@
+LeetCode 26 – Remove Duplicates from Sorted Array
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        j=0
+        for i in range(1,len(nums)):
+            if nums[i]!=nums[j]:
+                j+=1
+                nums[j]=nums[i]
+        return j+1
+       
+        
+💡 Logic to Remember
+The array is already sorted, so duplicates are adjacent.
+Use two pointers:
+i → points to the last unique element (slow pointer).
+j → scans the array (fast pointer).
+
+When nums[j] != nums[i]:
+
+i += 1
+nums[i] = nums[j]
+
+Return:
+
+i + 1
+
+because i is an index, not the count.
+
+🧠 Memory Trick
+
+"Scan with j, write with i."
+
+j finds the next unique element.
+i stores it in the correct position.
+i + 1 = number of unique elements.
