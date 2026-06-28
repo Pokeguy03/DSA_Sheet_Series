@@ -1,0 +1,61 @@
+189. Rotate Array
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n=len(nums)
+        k=k%n
+        def reverse(left,right):
+            while left<=right:
+                nums[left],nums[right]=nums[right],nums[left]
+                left+=1
+                right-=1
+
+        reverse(0,n-1)
+        reverse(0,k-1)
+        reverse(k,n-1)
+        
+Logic to Remember
+Rotate by k means the last k elements move to the front.
+
+First, reduce unnecessary rotations:
+
+k = k % n
+Then perform 3 reverses:
+Reverse the entire array.
+Reverse the first k elements.
+Reverse the remaining n-k elements.
+Example
+nums = [1,2,3,4,5,6,7]
+k = 3
+
+Reverse all:
+
+[7,6,5,4,3,2,1]
+
+Reverse first k:
+
+[5,6,7,4,3,2,1]
+
+Reverse remaining:
+
+[5,6,7,1,2,3,4]
+
+✅ Answer
+
+🧠 Memory Trick
+
+"Reverse All → Reverse First K → Reverse Rest"
+
+or simply
+
+ARR = All → Right(K) → Rest
+
+Template
+k %= n
+
+reverse(0, n-1)
+reverse(0, k-1)
+reverse(k, n-1)
+Complexity
+Time: O(n)
+Space: O(1) (in-place)
