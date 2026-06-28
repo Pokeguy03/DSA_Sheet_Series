@@ -1,0 +1,35 @@
+LeetCode 1752 – Check if Array Is Sorted and Rotated:
+
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        n=len(nums)
+        ct=0
+        for i in range(n-1):
+            if nums[i]>nums[i+1]:
+                ct+=1
+        if nums[-1]>nums[0]:
+            ct+=1
+        return ct<=1
+
+
+💡 Logic to Remember
+A sorted array has 0 drops.
+A sorted & rotated array has exactly 1 drop.
+
+A drop is when:
+
+nums[i] > nums[i + 1]
+
+Since the array is circular, also check:
+
+nums[-1] > nums[0]
+If drops ≤ 1, return True; otherwise False.
+🧠 Memory Trick
+
+"Count the drops in the circle."
+
+0 drops → Sorted ✅
+1 drop → Sorted & Rotated ✅
+2+ drops → Invalid ❌
+
+
