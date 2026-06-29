@@ -1,0 +1,120 @@
+136. Single Number:
+My approach:
+
+from collections import Counter
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        count = Counter(nums)
+        for i, v in count.items():
+            if v == 1:
+                return i
+
+                
+Optimal Solution (Using XOR)
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        ans = 0
+
+        for num in nums:
+            ans ^= num
+
+        return ans
+Why XOR?
+
+Remember these XOR properties:
+
+a ^ a = 0
+a ^ 0 = a
+
+Since every number appears twice, they cancel each other.
+
+Only the single number remains.
+
+Dry Run
+nums = [4,1,2,1,2]
+
+Initially
+
+ans = 0
+
+Step 1
+
+ans = 0 ^ 4 = 4
+
+Step 2
+
+ans = 4 ^ 1 = 5
+
+Step 3
+
+ans = 5 ^ 2 = 7
+
+Step 4
+
+ans = 7 ^ 1 = 6
+
+because
+
+(4 ^ 1 ^ 2 ^ 1)
+↓
+
+1 ^ 1 = 0
+
+Step 5
+
+ans = 6 ^ 2 = 4
+
+because
+
+2 ^ 2 = 0
+
+Final answer
+
+4
+Another Way to Think
+2 2 1
+
+↓
+
+2 ^ 2 ^ 1
+
+↓
+
+0 ^ 1
+
+↓
+
+1
+
+Duplicates disappear.
+
+💡 Logic to Remember
+Every number appears twice except one.
+XOR of the same numbers is 0.
+XOR with 0 gives the number itself.
+XOR all elements → duplicates cancel → single number remains.
+🧠 Memory Trick
+
+"Same numbers cancel with XOR."
+
+or
+
+"Pair disappears, Single survives."
+
+📌 Revision Note (30 seconds)
+
+Pattern: XOR
+
+ans = 0
+
+for num in nums:
+    ans ^= num
+
+return ans
+XOR Rules
+a ^ a = 0
+a ^ 0 = a
+⏱️ Complexity
+Solution	Time	Space
+Counter	O(n)	O(n) ❌
+XOR	O(n)	O(1) ✅
