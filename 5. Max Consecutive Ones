@@ -1,0 +1,44 @@
+LeetCode 485 – Max Consecutive Ones
+
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        res=[]
+        ct=0
+        for i in range(len(nums)):
+            if nums[i]==1:
+                ct+=1
+            else:
+                res.append(ct)
+                ct=0
+        res.append(ct)
+        return max(res)
+        
+💡 Logic to Remember
+Keep 2 variables:
+count → current consecutive 1s.
+maxCount → maximum consecutive 1s seen so far.
+Traverse the array:
+If 1 → count += 1 and update maxCount.
+If 0 → reset count = 0.
+🧠 Memory Trick
+
+"1 → Count, 0 → Reset, Max → Remember."
+
+📌 Revision Note (30 seconds)
+
+Pattern: Continuous Streak / Longest Consecutive
+
+if num == 1:
+    count += 1
+    maxCount = max(maxCount, count)
+else:
+    count = 0
+count → Current streak
+maxCount → Best streak
+🔥 One-Line Formula
+
+"Increase on 1, Reset on 0, Update Maximum."
+
+⏱️ Complexity
+Time Complexity: O(n) (visit each element once)
+Space Complexity: O(1) (only two variables)
