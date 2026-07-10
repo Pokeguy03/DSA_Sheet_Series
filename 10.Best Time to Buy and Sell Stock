@@ -1,0 +1,20 @@
+Logic to Remember
+Track the lowest buying price seen so far.
+For every new price:
+Calculate today's profit.
+Update the maximum profit.
+🧠 Memory Trick
+
+"Buy at the minimum, sell today if profitable."
+
+📌 Revision Note
+
+Pattern: Running Minimum
+
+minPrice = min(minPrice, price)
+profit = price - minPrice
+maxProfit = max(maxProfit, profit)
+⏱️ Complexity
+Approach	Time	Space
+Nested Loops	O(n²)	O(1)
+Running Minimum (Optimal)	O(n)	O(1)
