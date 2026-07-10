@@ -1,0 +1,92 @@
+# o(n^3)
+# class Solution:
+#     def maxSubArray(self, nums: List[int]) -> int:
+#         maxi=float("-inf")
+#         for i in range(len(nums)):
+#             for j in range(i,len(nums)):
+#                 summ=sum(nums[i:j+1])
+#                 maxi=max(summ,maxi)
+#         return maxi
+
+#O(n^2)
+# class Solution:
+#     def maxSubArray(self, nums: List[int]) -> int:
+#         maxi=float("-inf")
+#         for i in range(len(nums)):
+#             summ=0
+#             for j in range(i,len(nums)):
+#                 summ+=nums[j]
+#                 maxi=max(summ,maxi)
+#         return maxi
+            
+#O(n)
+# kadane algorithm:
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        maxi=float("-inf")
+        current_sum=0
+        for i in range(len(nums)):
+            current_sum+=nums[i]
+            maxi=max(current_sum,maxi)
+            if current_sum<0:
+                current_sum=0
+        return maxi
+        
+            
+
+Logic to Remember
+Add the current element to current_sum.
+Update maxi.
+If current_sum becomes negative, reset it to 0.
+🧠 Memory Trick
+
+"Negative sum? Throw it away. Positive sum? Carry it forward."
+
+or
+
+"Keep the profit, drop the loss."
+
+📌 Revision Note (30 seconds)
+
+Pattern: Kadane's Algorithm
+
+current_sum += num
+
+maxi = max(maxi, current_sum)
+
+if current_sum < 0:
+    current_sum = 0
+⚠️ Important Point
+
+Why do we update maxi before resetting?
+
+Consider:
+
+nums = [-2]
+
+If you reset first:
+
+current_sum = -2
+
+current_sum = 0
+
+maxi = 0
+
+❌ Wrong answer.
+
+The correct answer is:
+
+-2
+
+So always do:
+
+maxi = max(maxi, current_sum)
+
+before
+
+if current_sum < 0:
+    current_sum = 0
+⏱️ Complexity
+Time: O(n) (one traversal)
+Space: O(1) (only two variables)
