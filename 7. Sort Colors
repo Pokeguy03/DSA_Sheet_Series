@@ -16,4 +16,36 @@ class Solution:
                 right-=1
         
 
-        
+
+Logic
+
+Use 3 pointers:
+
+low → Next position for 0
+mid → Current element
+high → Next position for 2
+Rules
+0 → Swap(low, mid), low++, mid++
+
+1 → mid++
+
+2 → Swap(mid, high), high--
+🧠 Memory Trick
+
+"0 → Left, 1 → Move, 2 → Right."
+
+or
+
+"0 → Swap & Move Both, 1 → Move Mid, 2 → Swap & Move Right."
+
+⚠️ Important Point
+After swapping 0 → mid++ ✅ (left side is already processed)
+After swapping 2 → Don't mid++ ❌ (new element from the right is unprocessed)
+⏱️ Time Complexity
+Time: O(n)
+Each element is processed at most once.
+mid moves from left to right, and high moves from right to left.
+💾 Space Complexity
+Space: O(1)
+Only three pointers (low, mid, high) are used.
+No extra array is created.
