@@ -1,0 +1,69 @@
+My Approach:
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        pos = []
+        neg = []
+
+        for i in nums:
+            if i >= 0:
+                pos.append(i)
+            else:
+                neg.append(i)
+
+        res = []
+        l = 0
+
+        while l < len(pos):
+            res.append(pos[l])
+            res.append(neg[l])
+            l += 1
+
+        return res
+
+Optimal Approach:
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        ans = [0] * len(nums)
+
+        pos = 0
+        neg = 1
+
+        for num in nums:
+            if num > 0:
+                ans[pos] = num
+                pos += 2
+            else:
+                ans[neg] = num
+                neg += 2
+
+        return ans
+
+
+
+Logic
+
+Since positives go to:
+
+0, 2, 4, 6...
+
+and negatives go to:
+
+1, 3, 5, 7...
+
+Keep two indices:
+
+pos = 0
+neg = 1
+
+Traverse the array once.
+
+If positive:
+Place at pos
+pos += 2
+If negative:
+Place at neg
+neg += 2
+
+⏱️ Complexity
+Time: O(n) (one traversal)
+Space: O(n) (extra output array)
