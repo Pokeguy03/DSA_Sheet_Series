@@ -1,0 +1,29 @@
+class Solution:
+    def leaders(self, nums):
+        n = len(nums)
+        res = []
+        current = nums[n - 1]
+
+        for i in range(n - 1, -1, -1):
+            if nums[i] >= current:
+                res.append(nums[i])
+                current = nums[i]
+
+        return res[::-1]
+
+Logic
+Start from the rightmost element.
+Keep track of the maximum seen so far (current).
+If the current element is greater than or equal to current, it's a leader.
+Update current.
+Reverse the result at the end.
+🧠 Memory Trick
+
+"Right Max becomes the Leader."
+
+⏱️ Complexity
+Time: O(n) (single traversal + reverse)
+Space: O(n) (to store the leaders)
+🔥 One-Line Formula
+
+"Traverse from right → Compare with right maximum → Update → Reverse."
