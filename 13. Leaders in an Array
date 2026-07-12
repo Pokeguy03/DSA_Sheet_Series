@@ -11,7 +11,7 @@ class Solution:
 
         return res[::-1]
 
-Logic
+Logic:
 Start from the rightmost element.
 Keep track of the maximum seen so far (current).
 If the current element is greater than or equal to current, it's a leader.
