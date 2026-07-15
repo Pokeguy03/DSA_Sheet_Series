@@ -1,0 +1,50 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        #row
+        m=len(matrix)
+        #column
+        n=len(matrix[0])
+        
+        m_row=[0]*m
+        n_row=[0]*n
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j]==0:
+                    m_row[i]=1
+                    n_row[j]=1
+        for i in range(m):
+            for j in range(n):
+                if m_row[i]==1 or n_row[j]==1:
+                    matrix[i][j]=0
+        return matrix
+
+
+  Idea
+Use two arrays:
+row[] → marks rows containing 0
+col[] → marks columns containing 0
+Algorithm
+Traverse the matrix.
+If matrix[i][j] == 0:
+row[i] = 1
+col[j] = 1
+Traverse again.
+
+If row[i] == 1 or col[j] == 1, set:
+
+matrix[i][j] = 0
+Why 2 Passes?
+1st Pass: Record which rows/columns need to be zero.
+2nd Pass: Update the matrix.
+Avoids creating new zeros that would incorrectly affect other cells.
+Time Complexity
+First traversal: O(n × m)
+Second traversal: O(n × m)
+Overall: O(n × m)
+Space Complexity
+row[] → O(n)
+col[] → O(m)
+Overall: O(n + m)
+Interview One-Liner
+
+Mark all rows and columns containing 0 using two arrays, then make those rows and columns zero in a second traversal.
