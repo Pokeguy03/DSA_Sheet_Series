@@ -1,0 +1,32 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        num1=set(nums)
+        maxi=0
+        for i in num1:
+            if i-1 not in num1:
+                l=1
+                while i+1 in num1:
+                    l+=1
+                    i+=1
+                maxi=max(l,maxi)
+                   
+        return maxi
+        
+Algorithm
+Convert the array to a set.
+Traverse each number.
+If num - 1 is not in the set, it is the start of a sequence.
+Count consecutive numbers using a while loop.
+Update the maximum length.
+Key Condition
+if num - 1 not in num_set:
+Starts counting only from the beginning of a sequence.
+Prevents counting the same sequence multiple times.
+Why O(n)?
+Building the set → O(n)
+for loop → O(n)
+Each number is visited only once in all while loops combined.
+Overall Time: O(n)
+Space Complexity
+Set stores all elements.
+Space: O(n)
