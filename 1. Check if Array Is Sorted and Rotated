@@ -12,7 +12,7 @@ class Solution:
         return ct<=1
 
 
-💡 Logic to Remember:
+💡 Logic to Remember
 A sorted array has 0 drops.
 A sorted & rotated array has exactly 1 drop.
 
